@@ -1,0 +1,38 @@
+@layout('layouts.app')
+@section('content')
+  <!-- Page Header -->
+  <header class="masthead" style="background-image: url('{{posts.image}}')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="post-heading">
+            <h1>{{posts.title}}</h1>
+            <h2 class="subheading">{{posts.subtitle}}</h2>
+            <span class="meta">Posted by
+              <a href="#">{{posts.username}}</a>
+              on
+              @if(posts.createdAt)
+              {{posts.createdAt.toDateString()}}
+              @endif
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Post Content -->
+  <article>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <p>
+            {{posts.content}}
+          </p>
+      </div>
+    </div>
+  </article>
+
+  <hr>
+@endsection

@@ -39,6 +39,7 @@ app.use(bodyParser.urlencoded({extended:true}))
 app.use(fileUpload());
 
 const storePost = require('./middleware/storePost')
+const auth = require('./middleware/auth');
 app.use('/posts/store',storePost)
 
 app.get('/',homePageController)
@@ -48,10 +49,12 @@ app.get('/auth/register',createUserController)
 app.post('/users/register',storeUserController)
 app.post('/users/login',loginUserController)
 app.get('/contact',contactPageController)
-app.get('/blogs/new',createPostController);
-app.post('/blogs/store',storePostController)
+app.get('/blogs/new',auth,createPostController);
+app.post('/blogs/store',auth,storePost,storePostController)
 app.get('/blog/:id',singlePageController)
 
 app.listen(5000,()=>{
     console.log("berjalan di port 5000")
 })
+
+// vidio display
